@@ -24,6 +24,7 @@ namespace Niantic.Lightship.Maps.Samples.GameSample
         /// <inheritdoc />
         public override void Build(IMapTile mapTile, GameObject parent)
         {
+            Debug.Log("_resourceType=" + _resourceType + " mapTile=" + mapTile + " parent=" + parent);
             if (MapGameState.Instance.IsResourceProductionEnabled(_resourceType))
             {
                 // Only spawn objects if this type of resource production is enabled

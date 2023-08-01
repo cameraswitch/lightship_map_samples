@@ -34,6 +34,9 @@ namespace Niantic.Lightship.Maps.Samples.GameSample
         [SerializeField]
         private LayerGameObjectPlacement _strongholdSpawner;
 
+        [SerializeField]
+        private MapGameAudio _mapGameAudio;
+
         private MapGameState.StructureType _placingStructureType;
         private bool _placingStructure;
 
@@ -121,6 +124,7 @@ namespace Niantic.Lightship.Maps.Samples.GameSample
         {
             var touchRay = _mapCamera.ScreenPointToRay(touchPosition);
 
+
             // raycast into scene and see if we hit a map feature
             if (!Physics.Raycast(touchRay, out var hitInfo))
             {
@@ -133,10 +137,12 @@ namespace Niantic.Lightship.Maps.Samples.GameSample
             {
                 return;
             }
+            Debug.Log("hitResourceItem = " + hitResourceItem);
 
             // check if this resource has any units available to consume
             if (!hitResourceItem.ResourcesAvailable)
             {
+                Debug.Log("hitResourceItem.ResourcesAvailable returns");
                 return;
             }
 
@@ -150,6 +156,10 @@ namespace Niantic.Lightship.Maps.Samples.GameSample
             var rotation = Quaternion.LookRotation(forward, Vector3.up);
             var floatText = Instantiate(_floatingTextPrefab, floatingTextPosition, rotation);
             floatText.SetText($"+{amount} {hitResourceItem.ResourceType.ToString()}");
+
+
+            _mapGameAudio.play(hitResourceItem.ResourceType);
+
         }
     }
 }

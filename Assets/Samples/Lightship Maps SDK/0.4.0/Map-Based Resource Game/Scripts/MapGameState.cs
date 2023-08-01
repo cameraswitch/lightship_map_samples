@@ -27,7 +27,8 @@ namespace Niantic.Lightship.Maps.Samples.GameSample
             Wood,
             Planks,
             Stone,
-            Bricks
+            Bricks,
+            Ducks,
         }
 
         public enum StructureType
@@ -62,8 +63,11 @@ namespace Niantic.Lightship.Maps.Samples.GameSample
             _resources[ResourceType.Planks] = 0;
             _resources[ResourceType.Stone] = 0;
             _resources[ResourceType.Bricks] = 0;
+            _resources[ResourceType.Ducks] = 0;
 
             _resourceProduction[ResourceType.Wood] = true;
+            _resourceProduction[ResourceType.Stone] = true;
+            _resourceProduction[ResourceType.Ducks] = true;
         }
 
         public bool IsResourceProductionEnabled(ResourceType resourceType)

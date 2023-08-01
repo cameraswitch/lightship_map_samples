@@ -53,6 +53,9 @@ namespace Niantic.Lightship.Maps.Samples.GameSample
         private TMP_Text _bricksText;
 
         [SerializeField]
+        private TMP_Text _ducksText;
+
+        [SerializeField]
         private TMP_Text _errorText;
 
         // keeps track if the player has already won or not
@@ -107,6 +110,9 @@ namespace Niantic.Lightship.Maps.Samples.GameSample
                     break;
                 case MapGameState.ResourceType.Bricks:
                     _bricksText.text = amount.ToString();
+                    break;
+                case MapGameState.ResourceType.Ducks:
+                    _ducksText.text = amount.ToString();
                     break;
             }
         }
